@@ -1,8 +1,9 @@
 import styled from "styled-components"
-import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom"
+import { useContext} from "react";
 import FavoriteContext from "../../context/favoriteContext";
 import PokemonCard from "../PokemonCard";
-import { useNavigate } from "react-router-dom"
+
 
 const Container = styled.div`
   display: flex;

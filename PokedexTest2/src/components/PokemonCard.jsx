@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import FavoriteContext from "../context/favoriteContext";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
   display: flex;
@@ -52,12 +52,9 @@ const FeatureLabelAbilities = styled(FeatureLabel)`
 `;
 
 const PokemonCard = ({ pokemon }) => {
-  const navigate = useNavigate()
-  const { updateFavoritePokemons, setSelectedPokemon, favoritePokemons } = useContext(FavoriteContext);
-
-  // const onHeartClick = () => {
-  //   updateFavoritePokemons(pokemon.name);
-  // };
+  const navigate = useNavigate();
+  const { updateFavoritePokemons, setSelectedPokemon, favoritePokemons } =
+    useContext(FavoriteContext);
 
   const onHeartClick = (e) => {
     e.stopPropagation(); // Zapobiega wyzwalaniu onClick na Card gdy klikniemy na serce
@@ -65,15 +62,14 @@ const PokemonCard = ({ pokemon }) => {
   };
   const onCardClick = () => {
     setSelectedPokemon(pokemon);
-    navigate("/Pokemon")
+    navigate("/Pokemon");
   };
-  const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🤍"
+  const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🤍";
 
   return (
-    <Card onClick = {onCardClick}>
+    <Card onClick={onCardClick}>
       <button onClick={onHeartClick}>{heart}</button>
       <img alt={pokemon.name} src={pokemon.sprites.front_default} />
-      
 
       <PokemonName>
         {pokemon.name.charAt(0).toUpperCase() +

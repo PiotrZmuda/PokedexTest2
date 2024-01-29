@@ -11,6 +11,7 @@
 
 // export default FavoriteContext;
 
+//favoriteContext
 import React, { useState, createContext } from "react";
 
 const FavoriteContext = createContext({
@@ -48,3 +49,4 @@ export const FavoriteProvider = ({ children }) => {
 };
 
 export default FavoriteContext;
+
