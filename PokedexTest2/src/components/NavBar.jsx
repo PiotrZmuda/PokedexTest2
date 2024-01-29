@@ -1,6 +1,7 @@
-
+import { useContext } from "react";
 import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
+import FavoriteContext from "../context/favoriteContext";
 
 const NavContainer = styled.div`
 margin: 0px;
@@ -45,7 +46,7 @@ const NavButtons = styled.div`
 
 function NavBar() {
   const { pathname } = useLocation();
-
+  const { favoritePokemons } = useContext(FavoriteContext);
 
   return (
     <NavContainer>
@@ -58,7 +59,7 @@ function NavBar() {
           <Link to="/Arena">Arena</Link>
         </NavButtons>
         <NavButtons className={pathname === "/Favorite" ? "active" : ""}>
-          <Link to="/Favorite">Favorite </Link>
+          <Link to="/Favorite">Favorite ({favoritePokemons.length})</Link>
         </NavButtons>
         <NavButtons className={pathname === "/Login" ? "active" : ""}>
           <Link to="/Login">Login</Link>

@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
-import { getPokemons, getPokemonData } from "../../api";
 
-const usePokemons = (cardsPerPage) => {
+import { useState, useEffect } from 'react';
+import { getPokemons, getPokemonData } from '../../api';
+
+export default function useHomePokemons(cardsPerPage) {
   const [loading, setLoading] = useState(false);
   const [pokemons, setPokemons] = useState([]);
   const [page, setPage] = useState(0);
@@ -12,26 +13,19 @@ const usePokemons = (cardsPerPage) => {
       try {
         setLoading(true);
         const data = await getPokemons(cardsPerPage, cardsPerPage * page);
-        console.log("usePokemons data", data);
-        const allPokemonCards = 150;
         const promises = data.results.map(({ url }) => getPokemonData(url));
 
         const pokemonsData = await Promise.all(promises);
-        console.log("usePokemons pokemonsData", pokemonsData);
-
         setPokemons(pokemonsData);
+        setTotalPages(Math.ceil(150 / cardsPerPage)); // Założyłem, że to stała liczba
         setLoading(false);
-        setTotalPages(Math.ceil(allPokemonCards / cardsPerPage));
       } catch (error) {
         console.error("fetchPokemons error", error);
       }
-      
     };
-   
 
     fetchPokemons();
   }, [cardsPerPage, page]);
-  return { pokemons, loading, page, setPage, totalPages };
-};
 
-export default usePokemons;
+  return { pokemons, loading, page, setPage, totalPages };
+}

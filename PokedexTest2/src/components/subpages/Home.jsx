@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import usePokemons from "../../hooks/usePokemons";
-import PokemonCard2 from "../PokemonCard2";
+import useHomePokemons from "../../hooks/useHomePokemons";
+import PokemonCard from "../PokemonCard";
 import Pagination from "../Pagination";
 
 const Container = styled.div`
@@ -10,8 +10,7 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const { pokemons, loading, page, setPage, totalPages } = usePokemons(10); // Przykładowa liczba kart na stronie (10)
-  console.log("Tablica pokemonów", pokemons);
+  const { pokemons, loading, page, setPage, totalPages } = useHomePokemons(15); // Przykładowa liczba kart na stronie (10);
 
   const onLeftClickHandler = () => {
     if (page > 0) {
@@ -39,7 +38,7 @@ const Home = () => {
           <div>
             {pokemons &&
               pokemons.map((pokemon, index) => (
-                <PokemonCard2 key={index} pokemon={pokemon} />
+                <PokemonCard key={index} pokemon={pokemon} />
               ))}
           </div>
         )}

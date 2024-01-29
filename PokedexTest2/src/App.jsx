@@ -1,5 +1,7 @@
 //favocione
 // 7 osób z 30 zostało
+
+
 import "./App.css";
 import { useState } from "react";
 //Biblioteki zewnętrzne
@@ -62,3 +64,4 @@ function App() {
 }
 
 export default App;
+
