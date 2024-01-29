@@ -25,7 +25,9 @@ const usePokemons = (cardsPerPage) => {
       } catch (error) {
         console.error("fetchPokemons error", error);
       }
+      
     };
+   
 
     fetchPokemons();
   }, [cardsPerPage, page]);

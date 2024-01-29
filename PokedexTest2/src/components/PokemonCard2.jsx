@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useContext } from "react";
+import FavoriteContext from "../context/favoriteContext";
 
 const Card = styled.div`
   display: flex;
@@ -50,12 +51,20 @@ const FeatureLabelAbilities = styled(FeatureLabel)`
 `;
 
 const PokemonCard2 = ({ pokemon }) => {
+  const { favoritePokemons, updateFavoritesPokemons } = useContext(FavoriteContext);
 
-    // const { pokemon, loading, page, setPage, totalPages } = usePokemons(10)
-    // console.log("Pokemon Pokemon ",pokemon)
+  const onHeartClick = () => {
+    updateFavoritesPokemons(pokemon.name);
+    console.log("dodaj ulubionego pokemona");
+  };
+
+  const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🤍"
+
   return (
     <Card>
+      <button onClick={onHeartClick}>{heart}</button>
       <img alt={pokemon.name} src={pokemon.sprites.front_default} />
+      
 
       <PokemonName>
         {pokemon.name.charAt(0).toUpperCase() +
@@ -85,7 +94,6 @@ const PokemonCard2 = ({ pokemon }) => {
 };
 
 export default PokemonCard2;
-
 
 // import React from 'react';
 // import styled from "styled-components";

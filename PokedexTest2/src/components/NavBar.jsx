@@ -46,6 +46,7 @@ const NavButtons = styled.div`
 function NavBar() {
   const { pathname } = useLocation();
 
+
   return (
     <NavContainer>
       <WebLogo>Pokedex</WebLogo>
@@ -57,7 +58,7 @@ function NavBar() {
           <Link to="/Arena">Arena</Link>
         </NavButtons>
         <NavButtons className={pathname === "/Favorite" ? "active" : ""}>
-          <Link to="/Favorite">Favorite</Link>
+          <Link to="/Favorite">Favorite </Link>
         </NavButtons>
         <NavButtons className={pathname === "/Login" ? "active" : ""}>
           <Link to="/Login">Login</Link>
