@@ -10,7 +10,7 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const { pokemons, loading, page, setPage, totalPages } = useHomePokemons(15); // Przykładowa liczba kart na stronie (10);
+  const { pokemons, loading, page, setPage, totalPages } = useHomePokemons(15);
 
   const onLeftClickHandler = () => {
     if (page > 0) {

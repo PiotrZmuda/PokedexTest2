@@ -11,8 +11,7 @@ const Container = styled.div`
 `;
 
 const Favorite = () => {
-  const { pokemons, loading, page, totalPages, setPage } =
-    useFavoritePokemons(15); //liczba kart pokemonów
+  const { pokemons, loading, page, totalPages, setPage } =useFavoritePokemons(15); //liczba kart pokemonów
   const { favoritePokemons } = useContext(FavoriteContext);
 
   const onLeftClickHandler = () => {
@@ -29,7 +28,7 @@ const Favorite = () => {
   return (
     <Container>
       <div>
-        <h1>Ulubione pokemony ({favoritePokemons.length})</h1>
+        <h2>Ulubione pokemony ({favoritePokemons.length})</h2>
       </div>
       <Pagination
         page={page + 1}

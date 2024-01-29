@@ -16,7 +16,7 @@ import {
   Arena,
   Favorite,
   Login,
-  // Pokemon,
+  Pokemon,
   Registration,
   NotFound,
 } from "./components/subpages";
@@ -25,6 +25,7 @@ import NavBar from "./components/NavBar";
 
 function App() {
   const [favorites, setFavorites] = useState([]);
+  console.log("favorite App", favorites)
   
   const updateFavoritesPokemons = (name) => {
     setFavorites((prevFavorites) => {
@@ -52,7 +53,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/arena" element={<Arena />} />
             <Route path="/favorite" element={<Favorite />} />
-            {/* <Route path="/Pokemon" element={<Pokemon />} /> */}
+            <Route path="/Pokemon" element={<Pokemon />} />
             <Route path="/login" element={<Login />} />
             <Route path="/registration" element={<Registration />} />
             <Route path="*" element={<NotFound />} />

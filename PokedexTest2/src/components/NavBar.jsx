@@ -61,6 +61,9 @@ function NavBar() {
         <NavButtons className={pathname === "/Favorite" ? "active" : ""}>
           <Link to="/Favorite">Favorite ({favoritePokemons.length})</Link>
         </NavButtons>
+        <NavButtons className={pathname === "/Pokemon" ? "active" : ""}>
+          <Link to="/Pokemon">Pokemon</Link>
+        </NavButtons>
         <NavButtons className={pathname === "/Login" ? "active" : ""}>
           <Link to="/Login">Login</Link>
         </NavButtons>

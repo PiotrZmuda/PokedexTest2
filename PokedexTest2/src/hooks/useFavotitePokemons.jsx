@@ -1,4 +1,3 @@
-// hooks/useFavoritePokemons.js
 import { useState, useEffect, useContext } from 'react';
 import FavoriteContext from '../context/favoriteContext';
 import { getPokemonData } from '../../api';

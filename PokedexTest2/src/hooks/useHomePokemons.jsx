@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { getPokemons, getPokemonData } from '../../api';
 
@@ -17,7 +16,7 @@ export default function useHomePokemons(cardsPerPage) {
 
         const pokemonsData = await Promise.all(promises);
         setPokemons(pokemonsData);
-        setTotalPages(Math.ceil(150 / cardsPerPage)); // Założyłem, że to stała liczba
+        setTotalPages(Math.ceil(150 / cardsPerPage));
         setLoading(false);
       } catch (error) {
         console.error("fetchPokemons error", error);
