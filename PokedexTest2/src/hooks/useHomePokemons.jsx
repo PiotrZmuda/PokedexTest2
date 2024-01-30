@@ -15,6 +15,7 @@ export default function useHomePokemons(cardsPerPage) {
         const promises = data.results.map(({ url }) => getPokemonData(url));
 
         const pokemonsData = await Promise.all(promises);
+        console.log("pokemonsData", pokemonsData)
         setPokemons(pokemonsData);
         setTotalPages(Math.ceil(150 / cardsPerPage));
         setLoading(false);

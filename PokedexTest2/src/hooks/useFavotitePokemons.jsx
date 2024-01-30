@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from 'react';
-import FavoriteContext from '../context/favoriteContext';
+// import FavoriteContext from '../context/favoriteContext';
+import FavoriteContext from '../context/FavoriteContext2';
 import { getPokemonData } from '../../api';
 
 export default function useFavoritePokemons(cardsPerPage) {
+  // const { favoritePokemons } = useContext(FavoriteContext);
   const { favoritePokemons } = useContext(FavoriteContext);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);

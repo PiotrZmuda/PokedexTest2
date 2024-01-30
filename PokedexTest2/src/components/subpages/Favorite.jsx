@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import FavoriteContext from "../../context/favoriteContext";
+// import FavoriteContext from "../../context/favoriteContext";
+import FavoriteContext from "../../context/FavoriteContext2";
 import useFavoritePokemons from "../../hooks/useFavotitePokemons";
 import Pagination from "../Pagination";
 import styled from "styled-components";
@@ -11,7 +12,7 @@ const Container = styled.div`
 `;
 
 const Favorite = () => {
-  const { pokemons, loading, page, totalPages, setPage } =useFavoritePokemons(15); //liczba kart pokemonów
+  const { pokemons, loading, page, totalPages, setPage } = useFavoritePokemons(15); //liczba kart pokemonów
   const { favoritePokemons } = useContext(FavoriteContext);
 
   const onLeftClickHandler = () => {

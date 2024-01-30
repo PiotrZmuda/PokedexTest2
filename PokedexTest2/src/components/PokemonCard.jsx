@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import FavoriteContext from "../context/favoriteContext";
+// import FavoriteContext from "../context/favoriteContext";
+import FavoriteContext from "../context/FavoriteContext2";
+import SelectedPokemonContext from "../context/SelectedPokemonContext";
+import ArenaContext from "../context/ArenaContext";
 import { useNavigate } from "react-router-dom";
 
 const Card = styled.div`
@@ -51,10 +54,13 @@ const FeatureLabelAbilities = styled(FeatureLabel)`
   }
 `;
 
+
 const PokemonCard = ({ pokemon }) => {
   const navigate = useNavigate();
-  const { updateFavoritePokemons, setSelectedPokemon, favoritePokemons } =
-    useContext(FavoriteContext);
+  // const { updateFavoritePokemons, setSelectedPokemon, favoritePokemons,addToArena,removeFromArena,arenaPokemons } =useContext(FavoriteContext);
+  const { updateFavoritePokemons, favoritePokemons} =useContext(FavoriteContext);
+  const { setSelectedPokemon} =useContext(SelectedPokemonContext);
+  const { addToArena,removeFromArena,arenaPokemons} =useContext(ArenaContext);
 
   const onHeartClick = (e) => {
     e.stopPropagation(); // Zapobiega wyzwalaniu onClick na Card gdy klikniemy na serce
@@ -65,10 +71,22 @@ const PokemonCard = ({ pokemon }) => {
     navigate("/Pokemon");
   };
   const heart = favoritePokemons.includes(pokemon.name) ? "❤️" : "🤍";
-
+  
+  const onSwordClick = (e) =>{
+    e.stopPropagation()
+    if(arenaPokemons.includes(pokemon)){
+      removeFromArena(pokemon.name)
+    }else{
+      addToArena(pokemon)
+    }
+    
+  }
+  // const sword = "⚔️"
+  const sword = arenaPokemons.includes(pokemon) ? "⚔️ na arenie" :"⚔️"
   return (
     <Card onClick={onCardClick}>
       <button onClick={onHeartClick}>{heart}</button>
+      <button onClick={onSwordClick}>{sword}</button>
       <img alt={pokemon.name} src={pokemon.sprites.front_default} />
 
       <PokemonName>
@@ -85,7 +103,6 @@ const PokemonCard = ({ pokemon }) => {
         <FeatureColumn>
           <FeatureLabel> {pokemon.base_experience}</FeatureLabel>
           <FeatureValue>Base experience</FeatureValue>
-
           <FeatureLabelAbilities>
             {pokemon.abilities.map((ability, index) => {
               return <div key={index}>{ability.ability.name}</div>;

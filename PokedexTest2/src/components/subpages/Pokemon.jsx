@@ -1,7 +1,8 @@
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
 import { useContext} from "react";
-import FavoriteContext from "../../context/favoriteContext";
+// import FavoriteContext from "../../context/favoriteContext";
+import SelectedPokemon from "../../context/SelectedPokemonContext";
 import PokemonCard from "../PokemonCard";
 
 
@@ -12,7 +13,7 @@ const Container = styled.div`
 `
 
 function Pokemon() {
-  const {selectedPokemon} = useContext(FavoriteContext)
+  const {selectedPokemon} = useContext(SelectedPokemon)
   const navigate = useNavigate()
 
   const onBtnClick = () => {

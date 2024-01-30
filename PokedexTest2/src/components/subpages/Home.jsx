@@ -16,7 +16,7 @@ const Home = () => {
   const filteredPokemons = searchPokemon
     ? pokemons.filter(
         (
-          pokemon //pokemons wsyztskie pokemony na stronie
+          pokemon //pokemon wszystkie pokemony na stronie
         ) => pokemon.name.toLowerCase().includes(searchPokemon.toLowerCase())
       )
     : pokemons;
